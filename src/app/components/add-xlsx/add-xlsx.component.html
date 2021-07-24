@@ -1,0 +1,12 @@
+<div class= "col-md-8 offset-md-3">
+    <h3> Añadir excel de usuarios </h3>
+    <form (ngSubmit) = "onSubmit()" actype="multipart/form-data">
+
+        
+        <div>
+            <input type = "file" (change) ="onFileChange($event)" multiple="true">
+            <h5>Añade un fichero excel con los datos de usuario</h5> 
+        </div>
+        <button class = "btn btn-success" type ="submit">Aceptar</button>
+    </form>
+</div>

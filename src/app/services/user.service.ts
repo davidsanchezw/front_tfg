@@ -30,4 +30,8 @@ export class UserService {
   deleteUser(id: number): Observable<Object>{
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
+
+  getUserListByGroupId(id: number):Observable<User[]>{
+    return this.httpClient.get<User[]>(`${this.baseURL}/listByGrouId/${id}`);
+  }
 }

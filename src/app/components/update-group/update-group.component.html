@@ -1,0 +1,12 @@
+<div class= "col-md-8 offset-md-3">
+    <h3> Modificar grupo </h3>
+    <form (ngSubmit) = "onSubmit()">
+
+        <div class="form-group">
+            <label>Nombre del grupo</label>
+            <input type="text" class="form-control" id="name"
+                [(ngModel)] = "group.name" name = "name">
+        </div>        
+        <button class = "btn btn-success" type ="submit">Modificar grupo</button>
+    </form>
+</div>

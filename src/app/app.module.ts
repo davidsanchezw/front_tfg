@@ -9,6 +9,12 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { FormsModule } from '@angular/forms';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { LoginComponent } from './components/login/login.component';
+import { CreateGroupComponent } from './components/create-group/create-group.component';
+import { AddXlsxComponent } from './components/add-xlsx/add-xlsx.component';
+import { GroupListComponent } from './components/group-list/group-list.component';
+import { UpdateGroupComponent } from './components/update-group/update-group.component';
+import { GroupDetailsComponent } from './components/group-details/group-details.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +22,13 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     UserListComponent,
     CreateUserComponent,
     UpdateUserComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    LoginComponent,
+    CreateGroupComponent,
+    AddXlsxComponent,
+    GroupListComponent,
+    UpdateGroupComponent,
+    GroupDetailsComponent
   ],
   imports: [
     BrowserModule,

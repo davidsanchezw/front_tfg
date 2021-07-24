@@ -1,0 +1,22 @@
+<h2>Datos de grupos</h2>
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let group of groups">
+            <td>{{ group.id }}</td>
+            <td>{{ group.name }}</td>
+            
+            <td>
+                <button (click) = "updateGroup(group.id)" class = "btn btn-info"> Modificar</button>
+                <button (click) = "deleteGroup(group.id)" class = "btn btn-danger" style ="margin-left: 10px"> Eliminar</button>
+                <button (click) = "groupDetails(group.id)" class = "btn btn-info" style ="margin-left: 10px"> Detalles</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
