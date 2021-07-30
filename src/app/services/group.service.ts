@@ -38,5 +38,9 @@ export class GroupService {
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
   
+  //------- User -----
+  getGroupListByID(id: number):Observable<Group[]>{
+    return this.httpClient.get<Group[]>(`${this.baseURL}/listByUserID/${id}`);
+  }
 
 }

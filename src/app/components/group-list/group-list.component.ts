@@ -10,19 +10,29 @@ import { GroupService } from 'src/app/services/group.service';
 })
 export class GroupListComponent implements OnInit {
 
+  rol: number;
   groups: Group[];
 
   constructor(private groupService: GroupService,
     private router: Router) { }
 
   ngOnInit(): void {
+    this.rol = Number(sessionStorage.getItem("rol"));
+    if (this.rol == 0) this.router.navigate(['/']);
     this.getGroups();
   }
 
   private getGroups(){
-    this.groupService.getGroupList().subscribe(data => {
-      this.groups = data;
-    });
+    if(this.rol == 111){
+      this.groupService.getGroupList().subscribe(data => {
+        this.groups = data;
+      });
+    } else {
+      this.groupService.getGroupListByID(Number(sessionStorage.getItem("id"))).subscribe(data => {
+        this.groups = data;
+      });
+    }
+
   }
 
   groupDetails(id: number){

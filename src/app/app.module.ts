@@ -15,6 +15,8 @@ import { AddXlsxComponent } from './components/add-xlsx/add-xlsx.component';
 import { GroupListComponent } from './components/group-list/group-list.component';
 import { UpdateGroupComponent } from './components/update-group/update-group.component';
 import { GroupDetailsComponent } from './components/group-details/group-details.component';
+import { UpperBarComponent } from './components/upper-bar/upper-bar.component';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { GroupDetailsComponent } from './components/group-details/group-details.
     AddXlsxComponent,
     GroupListComponent,
     UpdateGroupComponent,
-    GroupDetailsComponent
+    GroupDetailsComponent,
+    UpperBarComponent
   ],
   imports: [
     BrowserModule,

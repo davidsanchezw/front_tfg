@@ -16,6 +16,7 @@ export class UserListComponent implements OnInit {
     private router: Router){}
 
   ngOnInit(): void {
+    if (Number(sessionStorage.getItem("rol")) != 111) this.router.navigate(['/']);
     this.getUsers();
   }
 
