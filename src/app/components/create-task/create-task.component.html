@@ -1,0 +1,90 @@
+<app-upper-bar></app-upper-bar>
+
+<div class= "col-md-8 offset-md-3">
+    <h3> Crear tarea </h3>
+    <form (ngSubmit) = "onSubmit()">
+        <div class="form-group">
+            <label>Título</label>
+            <input type="text" class="form-control" id="title"
+                [(ngModel)] = "task.title" name = "title">
+        </div>
+        <div class="form-group">
+            <label for = "statement">Enunciado</label>
+            <textarea id="statement" class="form-control"
+                [(ngModel)] = "task.statement" id = "statement" name = "statement" rows = "3" min = "5"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Numero de reviews</label>
+            <input type="number" class="form-control" id="reviews"
+                [(ngModel)] = "task.reviews" name = "reviews" min="3">
+        </div>
+
+        <div class="form-group">
+            <label>Forma de trabajo</label>
+            <div>
+                <input type="radio" class="form-check-input" id="typeIdentity1" name = "typeIdentity" value = 1 [(ngModel)]= "typeIdentity">
+                <label class="form-check-label" for="typeIdentity1">Individual</label>
+            
+                <input type="radio" class="form-check-input" id="typeIdentity2" name = "typeIdentity" value = 2 [(ngModel)]= "typeIdentity">
+                <label class="form-check-label" for="typeIdentity2">En equipo</label>
+            </div>
+        </div>
+
+        <div class="form-group" *ngIf = "typeIdentity == 2">
+            <label>Número de componentes de equipo</label>
+            <input type="number" class="form-control" id="team"
+                name = "team" min = "1" max = "5" [(ngModel)]= "numberTeam">
+        </div>
+
+        <div class="form-group">
+            <label>Tipo de tarea</label>
+            <div>
+                <input type="radio" class="form-check-input" id="typeTask1" name = "typeTask" value = 1 [(ngModel)]= "typeTask">
+                <label class="form-check-label" for="typeTask1">Desarrollo</label>
+            
+                <input type="radio" class="form-check-input" id="typeTask2" name = "typeTask" value = 2 [(ngModel)]= "typeTask">
+                <label class="form-check-label" for="typeTask2">Test</label>
+            </div>
+        </div>
+
+        <div class="form-group" *ngIf = "typeTask == 2">
+            <label>Número de respuestas</label>
+            <input type="number" class="form-control" id="answers"
+                [(ngModel)] = "task.answers" name = "answers" min = "1" value= "1">
+        </div>
+
+        <div class = "container">
+            <h3>Fechas</h3>
+            <label>Fecha de entrega inicial</label>
+            <div class="form-group">
+                <input type="date" id="presentation" name="presentation"
+                [(ngModel)] = "scheduleTime.presentation">
+            </div>
+            <label>Fecha de revisión inicial</label>
+            <div class="form-group">
+                <input type="date" id="revision" name="revision"
+                [(ngModel)] = "scheduleTime.revision">
+            </div>
+
+            <label>Fecha de entrega final</label>
+            <div class="form-group">
+                <input type="date" id="finalPresentation" name="finalPresentation"
+                [(ngModel)] = "scheduleTime.finalPresentation">
+            </div>
+            <label>Fecha de revisión final</label>
+            <div class="form-group">
+                <input type="date" id="finalRevision" name="finalRevision"
+                [(ngModel)] = "scheduleTime.finalRevision">
+            </div>
+        </div>
+        
+
+        <button class = "btn btn-success" type ="submit">Crear tarea</button>
+    </form>
+</div>
+
+<footer class = "py-3 bg-dark text-light">
+    <div class = "container">
+      <span>Parte inferior</span>
+    </div>
+</footer>

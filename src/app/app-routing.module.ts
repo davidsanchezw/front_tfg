@@ -10,6 +10,9 @@ import { AddXlsxComponent } from './components/add-xlsx/add-xlsx.component';
 import { GroupListComponent } from './components/group-list/group-list.component';
 import { GroupDetailsComponent } from './components/group-details/group-details.component';
 import { UpdateGroupComponent } from './components/update-group/update-group.component';
+import { TaskListComponent } from './components/task-list/task-list.component';
+import { CreateTaskComponent } from './components/create-task/create-task.component';
+import { UpdateTaskComponent } from './components/update-task/update-task.component';
 
 
 
@@ -25,7 +28,10 @@ const routes: Routes = [
   {path: 'add-xlsx/:id', component: AddXlsxComponent},
   {path: 'groups', component: GroupListComponent},
   {path: 'group-details/:id', component: GroupDetailsComponent},
-  {path: 'update-group/:id', component: UpdateGroupComponent}
+  {path: 'update-group/:id', component: UpdateGroupComponent},
+  {path: 'tasks/:id', component: TaskListComponent},
+  {path: 'create-task/:id', component: CreateTaskComponent},
+  {path: 'update-task/:id', component: UpdateTaskComponent}
 ];
 
 @NgModule({

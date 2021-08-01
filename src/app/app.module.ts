@@ -16,6 +16,9 @@ import { GroupListComponent } from './components/group-list/group-list.component
 import { UpdateGroupComponent } from './components/update-group/update-group.component';
 import { GroupDetailsComponent } from './components/group-details/group-details.component';
 import { UpperBarComponent } from './components/upper-bar/upper-bar.component';
+import { TaskListComponent } from './components/task-list/task-list.component';
+import { CreateTaskComponent } from './components/create-task/create-task.component';
+import { UpdateTaskComponent } from './components/update-task/update-task.component';
 
 
 @NgModule({
@@ -31,7 +34,10 @@ import { UpperBarComponent } from './components/upper-bar/upper-bar.component';
     GroupListComponent,
     UpdateGroupComponent,
     GroupDetailsComponent,
-    UpperBarComponent
+    UpperBarComponent,
+    TaskListComponent,
+    CreateTaskComponent,
+    UpdateTaskComponent    
   ],
   imports: [
     BrowserModule,

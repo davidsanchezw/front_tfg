@@ -12,12 +12,14 @@ import { UserService } from 'src/app/services/user.service';
 export class UpdateUserComponent implements OnInit {
 
   id: number;
+  rol: number;
   user: User = new User();
   constructor(private userService: UserService, private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    this.rol = Number(sessionStorage.getItem("rol"));
+    if (this.rol != 111) this.router.navigate(['/']);
     this.id = this.route.snapshot.params['id'];
 
     this.userService.getUserById(this.id).subscribe(data => {

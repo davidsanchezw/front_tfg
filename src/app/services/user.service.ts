@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../classes/user';
-import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -11,8 +10,7 @@ import { Router } from '@angular/router';
 export class UserService {
 
   private baseURL = "http://localhost:8080/api/users";
-  constructor(private httpClient: HttpClient, private cookies: CookieService,
-    private router: Router) { }
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
 //----------- Admin --------------
 

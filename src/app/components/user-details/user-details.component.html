@@ -1,18 +1,38 @@
-<h3> Detalles de usuario </h3>
-<div>
+<app-upper-bar></app-upper-bar>
+<div class = "container">
+    <h3> Detalles de usuario </h3>
     <div>
-        <label> <b> Nombre: </b></label> {{user.firstName}}
-    </div>
-    <div>
-        <label> <b> Apellidos: </b></label> {{user.lastName}}
-    </div>
-    <div>
-        <label> <b> Email: </b></label> {{user.email}}
-    </div>
-    <div>
-        <label> <b> hash: </b></label> {{user.hash}}
-    </div>
-    <div>
-        <label> <b> Tipo de usuario: </b></label> {{user.typeUser}}
+        <div>
+            <label> <b> Nombre: </b></label> {{user.firstName}}
+        </div>
+        <div>
+            <label> <b> Apellidos: </b></label> {{user.lastName}}
+        </div>
+        <div>
+            <label> <b> Email: </b></label> {{user.email}}
+        </div>
+        <div *ngIf = "me == id">
+            <label> <b> Contraseña: </b></label>
+            <form class="custom-form">
+                
+                <input
+                  type="password"
+                  [(ngModel)]="user.hash"
+                  name="password"
+                  placeholder="Contraseña antigua"
+                  required="required"
+                />
+                <button type="submit" (click)="changePassword()">Cambiar</button>
+              </form>
+        </div>
+        <div>
+            <label> <b> Tipo de usuario: </b></label> {{user.typeUser}}
+        </div>
     </div>
 </div>
+
+<footer class = "py-3 bg-dark text-light">
+    <div class = "container">
+      <span>Parte inferior</span>
+    </div>
+</footer>

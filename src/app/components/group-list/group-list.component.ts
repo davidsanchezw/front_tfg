@@ -30,9 +30,10 @@ export class GroupListComponent implements OnInit {
     } else {
       this.groupService.getGroupListByID(Number(sessionStorage.getItem("id"))).subscribe(data => {
         this.groups = data;
+        console.log(data);
+
       });
     }
-
   }
 
   groupDetails(id: number){
@@ -48,5 +49,9 @@ export class GroupListComponent implements OnInit {
       console.log(data);
       this.getGroups();
     });
+  }
+
+  goToTasks(id: number){
+    this.router.navigate(['tasks', id]);
   }
 }

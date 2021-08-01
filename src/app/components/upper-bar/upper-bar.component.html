@@ -36,16 +36,13 @@
 <nav class = "navbar navbar-expand-sm bg-primary navbar-dark" *ngIf = "rol == 2">
     <ul  class = "navbar-nav" >
       <li class = "nav-item">
-        <a routerLink = "groups" routerLinkActive = "active" class = "nav-link">Lista de grupos</a>
+        <a (click) = "myDetails(id)" routerLinkActive = "active" class = "nav-link">Mi perfil</a>
       </li>
       <li class = "nav-item">
-        <a routerLink = "create-group" routerLinkActive = "active" class = "nav-link">Crear grupo</a>
+        <a (click) = "goToGroups()" routerLinkActive = "active" class = "nav-link">Mis grupos</a>
       </li>
       <li class = "nav-item">
-        <a routerLink = "users" routerLinkActive = "active" class = "nav-link">Lista de usuarios</a>
-      </li>
-      <li class = "nav-item">
-        <a routerLink = "create-user" routerLinkActive = "active" class = "nav-link">Crear usuario</a>
+        <a (click) = "logOut()" routerLinkActive = "active" class = "nav-link">Cerrar sesión</a>
       </li>
     </ul>
 </nav>

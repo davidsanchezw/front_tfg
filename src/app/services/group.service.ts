@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Group } from '../classes/group';
-import * as XLSX from 'xlsx';
 
 
 @Injectable({
@@ -41,6 +40,10 @@ export class GroupService {
   //------- User -----
   getGroupListByID(id: number):Observable<Group[]>{
     return this.httpClient.get<Group[]>(`${this.baseURL}/listByUserID/${id}`);
+  }
+
+  getGroupByTask(id: number):Observable<Group>{
+    return this.httpClient.get<Group>(`${this.baseURL}/groupByTask/${id}`);
   }
 
 }
