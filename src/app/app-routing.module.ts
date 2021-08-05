@@ -13,6 +13,7 @@ import { UpdateGroupComponent } from './components/update-group/update-group.com
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { CreateTaskComponent } from './components/create-task/create-task.component';
 import { UpdateTaskComponent } from './components/update-task/update-task.component';
+import { CreateResponseComponent } from './components/create-response/create-response.component';
 
 
 
@@ -31,7 +32,8 @@ const routes: Routes = [
   {path: 'update-group/:id', component: UpdateGroupComponent},
   {path: 'tasks/:id', component: TaskListComponent},
   {path: 'create-task/:id', component: CreateTaskComponent},
-  {path: 'update-task/:id', component: UpdateTaskComponent}
+  {path: 'update-task/:id', component: UpdateTaskComponent},
+  {path: 'create-response/:id', component: CreateResponseComponent}
 ];
 
 @NgModule({

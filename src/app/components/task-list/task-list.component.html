@@ -19,6 +19,7 @@
                 <td>{{ task.scheduleTime.presentation }}</td>
                 <td>
                     <button (click) = "updateTask(task.id)" class = "btn btn-info" *ngIf = "rol == 2"> Ver/Editar</button>
+                    <button (click) = "createResponse(task.id)" class = "btn btn-info" *ngIf = "rol == 1"> Crear/Modificar respuesta</button>
                     <!--Si no ha llegado el primero -> respuesta
                         Si pasa primero -> hacer revisiones
                         Si pasa segundo -> respuesta

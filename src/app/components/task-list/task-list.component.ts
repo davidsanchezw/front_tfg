@@ -54,4 +54,7 @@ export class TaskListComponent implements OnInit {
     this.router.navigate(['update-task', id]);
   }
 
+  createResponse(idTask: number){
+    this.router.navigate(['create-response', idTask]);
+  }
 }
