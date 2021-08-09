@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ScheduleTime } from 'src/app/classes/schedule-time';
 import { Task } from 'src/app/classes/task';
+import { Team } from 'src/app/classes/team';
 import { GroupService } from 'src/app/services/group.service';
 import { ScheduleTimeService } from 'src/app/services/schedule-time.service';
 import { TaskService } from 'src/app/services/task.service';
+import { TeamService } from 'src/app/services/team.service';
 
 @Component({
   selector: 'app-update-task',
@@ -18,19 +20,33 @@ export class UpdateTaskComponent implements OnInit {
   group: number;
   task: Task = new Task();
   scheduleTime: ScheduleTime = new ScheduleTime;
+  teams: Team[] = [];
   constructor(private taskService: TaskService, private router: Router,
     private route: ActivatedRoute, private groupService: GroupService,
-    private scheduleTimeService: ScheduleTimeService) { }
+    private scheduleTimeService: ScheduleTimeService, private teamService: TeamService) { }
 
   ngOnInit(): void {
     this.rol = Number(sessionStorage.getItem("rol"));
     if (this.rol != 2) this.router.navigate(['/']);
     this.id = this.route.snapshot.params['id'];
+    this.getTask();
+    
+  }
+
+  getTask(){
     this.taskService.getTaskById(this.id).subscribe(data => {
       console.log(data);
       this.asignDataTask(data);
       this.scheduleTime = data.scheduleTime;
       this.conversionDate1();
+      if (data.typeIdentity == 2) this.getTeams();
+    }, error => console.log(error));
+  }
+
+  getTeams(){
+    this.teamService.getTeamsByTask(this.id).subscribe(data => {
+      console.log(data);
+      this.teams = data;
     }, error => console.log(error));
   }
 
@@ -90,5 +106,9 @@ export class UpdateTaskComponent implements OnInit {
   
   onSubmit(){
     this.updateTask();
+  }
+
+  userDetails(id: number){
+    this.router.navigate(['user-details', id]);
   }
 }

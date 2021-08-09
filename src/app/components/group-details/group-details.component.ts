@@ -13,8 +13,8 @@ import { UserService } from 'src/app/services/user.service';
 export class GroupDetailsComponent implements OnInit {
 
   id: number;
-  group: Group;
-  users: User[];
+  group: Group = new Group();
+  users: User[] = [];
   constructor(private route: ActivatedRoute, private router: Router,
     private groupService : GroupService, private userService : UserService) { }
 

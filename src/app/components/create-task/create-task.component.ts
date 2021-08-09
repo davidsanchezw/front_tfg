@@ -4,6 +4,7 @@ import { ScheduleTime } from 'src/app/classes/schedule-time';
 import { Task } from 'src/app/classes/task';
 import { ScheduleTimeService } from 'src/app/services/schedule-time.service';
 import { TaskService } from 'src/app/services/task.service';
+import { TeamService } from 'src/app/services/team.service';
 
 @Component({
   selector: 'app-create-task',
@@ -23,7 +24,7 @@ export class CreateTaskComponent implements OnInit {
   typeIdentity: number;
 
   constructor(private route: ActivatedRoute, private scheduleTimeService: ScheduleTimeService,
-    private taskService: TaskService, private router: Router) { }
+    private taskService: TaskService, private router: Router, private teamService: TeamService) { }
 
   ngOnInit(): void {
     this.rol = Number(sessionStorage.getItem("rol"));
@@ -46,6 +47,10 @@ export class CreateTaskComponent implements OnInit {
       //Crear tiempos 
       this.saveScheduleTime(data.id);
 
+      //Comprobar tipo: equipo o individual
+      if (this.task.typeIdentity == 2) {
+        this.createTeams(data.id);
+      }
       this.goToGroupTasks();
     },
     error => console.log(error));    
@@ -67,6 +72,13 @@ export class CreateTaskComponent implements OnInit {
 
   goToGroupTasks(){
     this.router.navigate(['tasks', this.group]);
+  }
+
+  createTeams(idTask: number){
+    this.teamService.createTeam(idTask, this.numberTeam).subscribe( data =>{
+      console.log(data);      
+    },
+    error => console.log(error));
   }
 
 }

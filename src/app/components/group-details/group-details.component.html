@@ -23,8 +23,8 @@
                     <td>{{ user.firstName }}</td>
                     <td>{{ user.lastName }}</td>
                     <td>{{ user.email }}</td>
-                    <td *ngIf = "user.typeUser == 1">Profesor</td>
-                    <td *ngIf = "user.typeUser == 2">Alumno</td>
+                    <td *ngIf = "user.typeUser == 1">Alumno</td>
+                    <td *ngIf = "user.typeUser == 2">Profesor</td>
                     <td>
                         <!--<button (click) = "updateUser(user.id)" class = "btn btn-info"> Modificar</button>
                         <button (click) = "deleteUser(user.id)" class = "btn btn-danger" style ="margin-left: 10px"> Eliminar</button>-->

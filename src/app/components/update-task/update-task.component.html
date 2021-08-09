@@ -76,6 +76,27 @@
         <button class = "btn btn-success" type ="submit">Actualizar tarea</button>
     </form>
 </div>
+<div class="col-md-8 offset-md-3" *ngIf = "task.typeIdentity == 2">
+    <h2>Equipos</h2>
+    <table class = "table table-striped" *ngFor="let team of teams">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>                    
+            <tr *ngFor = "let user of team.users"> 
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>                
+                    <button (click) = "userDetails(user.id)" class = "btn btn-info" style ="margin-left: 10px"> Detalles</button>
+                </td>
+            </tr>                    
+        </tbody>
+    </table>
+</div>
 
 <footer class = "py-3 bg-dark text-light">
     <div class = "container">
