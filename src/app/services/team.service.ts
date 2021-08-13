@@ -19,4 +19,8 @@ export class TeamService {
   getTeamsByTask(id: number): Observable<Team[]>{
     return this.httpClient.get<Team[]>(`${this.baseURL}/TeamsByTask/${id}`);
   }
+
+  getTeamByTaskAndUser(idTask: number, idUser: number): Observable<Team>{
+    return this.httpClient.get<Team>(`${this.baseURL}/TeamByTaskAndUser/${idTask}/${idUser}`);
+  }
 }

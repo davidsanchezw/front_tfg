@@ -14,6 +14,7 @@ import * as XLSX from 'xlsx';
 export class AddXlsxComponent implements OnInit {
 
   id: number;
+  rol: number;
   target: DataTransfer;
 
   //Importante para el excel
@@ -26,7 +27,9 @@ export class AddXlsxComponent implements OnInit {
     constructor(private groupService: GroupService, private router: Router,
     private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
+    this.rol = Number(sessionStorage.getItem("rol"));
+    if (this.rol == 0) this.router.navigate(['/']);
     this.id = this.route.snapshot.params['id'];
   }
 

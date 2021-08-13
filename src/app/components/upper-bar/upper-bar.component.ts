@@ -24,8 +24,20 @@ export class UpperBarComponent implements OnInit {
     this.router.navigate(['user-details', me]);
   }
 
+  goToCreateGroup(){
+    this.router.navigate(['create-group']);
+  }
+
+  goToCreateUser(){
+    this.router.navigate(['create-user']);
+  }
+
   goToGroups(){
     this.router.navigate(['groups']);
+  }
+
+  goToUsers(){
+    this.router.navigate(['users']);
   }
 
   logOut(){

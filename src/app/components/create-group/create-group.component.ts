@@ -13,7 +13,8 @@ export class CreateGroupComponent implements OnInit {
   group: Group = new Group();
   constructor(private groupService: GroupService, private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
+    if (Number(sessionStorage.getItem("rol")) != 111) this.router.navigate(['/']);
   }
 
   saveGroup(){

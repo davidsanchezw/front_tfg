@@ -10,10 +10,13 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CreateUserComponent implements OnInit {
 
+  rol: number;
   user: User = new User();
   constructor(private userService: UserService, private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
+    this.rol = Number(sessionStorage.getItem("rol"));
+    if (this.rol == 0) this.router.navigate(['/']);
   }
 
   saveUser(){

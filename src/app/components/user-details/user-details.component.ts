@@ -12,17 +12,24 @@ export class UserDetailsComponent implements OnInit {
 
   id: number;
   me: number;
-  user: User;
+  rol: number;
+  user: User = new User();
 
   constructor(private route: ActivatedRoute, private userService : UserService,
     private router: Router) { }
 
   ngOnInit(): void {
-    if (Number(sessionStorage.getItem("rol")) == 0) this.router.navigate(['/']);
+    this.rol = Number(sessionStorage.getItem("rol"));
+    if (this.rol == 0) this.router.navigate(['/']);
     this.id = this.route.snapshot.params['id'];
-    this.me = Number(sessionStorage.getItem("rol"));
-    this.userService.getUserById(this.id).subscribe( data => {
+    this.me = Number(sessionStorage.getItem("id"));    
+    this.getUserById(this.id);
+  }
+
+  getUserById(idUser: number){
+    this.userService.getUserById(idUser).subscribe( data => {
       this.user = data;
+      if (this.me != data.id && this.rol == 1) this.router.navigate(['/']);
     })
   }
 

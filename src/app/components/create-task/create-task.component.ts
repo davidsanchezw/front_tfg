@@ -45,13 +45,7 @@ export class CreateTaskComponent implements OnInit {
 
     this.taskService.createTask(this.task, this.group).subscribe( data =>{
       //Crear tiempos 
-      this.saveScheduleTime(data.id);
-
-      //Comprobar tipo: equipo o individual
-      if (this.task.typeIdentity == 2) {
-        this.createTeams(data.id);
-      }
-      this.goToGroupTasks();
+      this.saveScheduleTime(data.id);      
     },
     error => console.log(error));    
   }
@@ -65,18 +59,26 @@ export class CreateTaskComponent implements OnInit {
     console.log(this.scheduleTime);
 
     this.scheduleTimeService.createScheduleTime(this.scheduleTime, idTask).subscribe( data =>{
-      console.log(data);      
+      console.log(data); 
+
+      //Comprobar tipo: equipo o individual
+      if (this.task.typeIdentity == 2) {
+        this.createTeams(data.id);
+      } else { 
+        this.goToUpdateTask(idTask); 
+      }
     },
     error => console.log(error));
   }
 
-  goToGroupTasks(){
-    this.router.navigate(['tasks', this.group]);
+  goToUpdateTask(idTask:number){
+    this.router.navigate(['update-task', idTask]);
   }
 
   createTeams(idTask: number){
     this.teamService.createTeam(idTask, this.numberTeam).subscribe( data =>{
-      console.log(data);      
+      console.log(data); 
+      this.goToUpdateTask(idTask);     
     },
     error => console.log(error));
   }

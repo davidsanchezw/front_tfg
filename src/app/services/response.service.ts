@@ -17,6 +17,10 @@ export class ResponseService {
     return this.httpClient.post<ResponseStatement>(`${this.baseURL}/statements/${idTask}/${idUser}`, responseStatement)
   }
 
+  createResponseStatementTeam(responseStatement: ResponseStatement, idTeam: number): Observable<ResponseStatement>{
+    return this.httpClient.post<ResponseStatement>(`${this.baseURL}/statements/team/${idTeam}`, responseStatement)
+  }
+
   updateResponseStatement(id: number, responseStatement: ResponseStatement): Observable<ResponseStatement>{
     return this.httpClient.put<ResponseStatement>(`${this.baseURL}/statements/${id}`, responseStatement);
   }
@@ -31,5 +35,9 @@ export class ResponseService {
 
   getResponseByTaskAndUser(idTask: number, idUser:number):Observable<ResponseStatement>{
     return this.httpClient.get<ResponseStatement>(`${this.baseURL}/${idTask}/${idUser}`);
+  }
+
+  getResponseByTeam(idTeam: number):Observable<ResponseStatement>{
+    return this.httpClient.get<ResponseStatement>(`${this.baseURL}/team/${idTeam}`);
   }
 }

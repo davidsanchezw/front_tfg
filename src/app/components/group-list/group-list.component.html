@@ -17,7 +17,7 @@
                 <td>
                     <button (click) = "updateGroup(group.id)" class = "btn btn-info" *ngIf = "rol == 111"> Modificar</button>
                     <button (click) = "deleteGroup(group.id)" class = "btn btn-danger" style ="margin-left: 10px" *ngIf = "rol == 111"> Eliminar</button>
-                    <button (click) = "goToTasks(group.id)" class = "btn btn-info" style ="margin-left: 10px"> Tareas</button>
+                    <button (click) = "goToTasks(group.id)" class = "btn btn-info" style ="margin-left: 10px" *ngIf = "rol == 1 || rol == 2"> Tareas</button>
                     <button (click) = "groupDetails(group.id)" class = "btn btn-secondary" style ="margin-left: 10px"> Detalles</button>
                 </td>
             </tr>
