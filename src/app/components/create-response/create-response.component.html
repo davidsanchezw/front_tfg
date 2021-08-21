@@ -13,21 +13,23 @@
             <p>Entrega reviews finales {{scheduleTime.finalRevision}}</p>
         </div>
 
-        <h3>Equipo</h3>
-        <table class = "table table-striped">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                </tr>
-            </thead>
-            <tbody>                    
-                <tr *ngFor = "let user of team.users"> 
-                    <td>{{ user.firstName }}</td>
-                    <td>{{ user.lastName }}</td>                
-                </tr>                    
-            </tbody>
-        </table>
+        <div *ngIf = "task.typeIdentity == 2">
+            <h3>Equipo</h3>
+            <table class = "table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                    </tr>
+                </thead>
+                <tbody>                    
+                    <tr *ngFor = "let user of team.users"> 
+                        <td>{{ user.firstName }}</td>
+                        <td>{{ user.lastName }}</td>                
+                    </tr>                    
+                </tbody>
+            </table>
+        </div>
 
         <div class="form-group">
             <label for = "statement">Enunciado</label>
@@ -63,3 +65,9 @@
         <button class = "btn btn-success" type ="submit">Guardar respuesta</button>
     </form>
 </div>
+
+<footer class = "py-3 bg-dark text-light">
+    <div class = "container">
+      <span>Parte inferior</span>
+    </div>
+</footer>

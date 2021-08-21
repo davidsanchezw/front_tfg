@@ -20,6 +20,8 @@ import { TaskListComponent } from './components/task-list/task-list.component';
 import { CreateTaskComponent } from './components/create-task/create-task.component';
 import { UpdateTaskComponent } from './components/update-task/update-task.component';
 import { CreateResponseComponent } from './components/create-response/create-response.component';
+import { CreateCommentComponent } from './components/create-comment/create-comment.component';
+import { CommentListComponent } from './components/comment-list/comment-list.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { CreateResponseComponent } from './components/create-response/create-res
     TaskListComponent,
     CreateTaskComponent,
     UpdateTaskComponent,
-    CreateResponseComponent    
+    CreateResponseComponent,
+    CreateCommentComponent,
+    CommentListComponent    
   ],
   imports: [
     BrowserModule,

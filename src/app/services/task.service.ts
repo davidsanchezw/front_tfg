@@ -32,4 +32,8 @@ export class TaskService {
   getTaskListByGroup(id: number): Observable<Task[]>{
     return this.httpClient.get<Task[]>(`${this.baseURL}/TaskListByGroup/${id}`);
   }
+
+  getTaskByComment(id: number): Observable<Task>{
+    return this.httpClient.get<Task>(`${this.baseURL}/TaskByComment/${id}`);
+  }
 }

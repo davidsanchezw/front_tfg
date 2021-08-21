@@ -20,6 +20,7 @@
                 <td>
                     <button (click) = "updateTask(task.id)" class = "btn btn-info" *ngIf = "rol == 2"> Ver/Editar</button>
                     <button (click) = "createResponse(task.id)" class = "btn btn-info" *ngIf = "rol == 1"> Crear/Modificar respuesta</button>
+                    <button (click) = "goToCommentsList(task.id)" class = "btn btn-secondary" *ngIf = "rol == 1"> Ver lista de reviews</button>
                     <!--Si no ha llegado el primero -> respuesta || COMPROBAR TBN EN EL PROPIO OCMPONENTE
                         Si pasa primero -> hacer revisiones
                         Si pasa segundo -> respuesta

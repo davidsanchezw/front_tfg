@@ -20,7 +20,6 @@ export class CreateResponseComponent implements OnInit {
   idTask: number;
   rol: number;
   task: Task = new Task();
-  index: number[] = [0];
   counter: number = 0;
   scheduleTime: ScheduleTime = new ScheduleTime();
   empty: boolean = false;

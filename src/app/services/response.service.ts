@@ -40,4 +40,8 @@ export class ResponseService {
   getResponseByTeam(idTeam: number):Observable<ResponseStatement>{
     return this.httpClient.get<ResponseStatement>(`${this.baseURL}/team/${idTeam}`);
   }
+
+  getResponseByComment(idComment: number):Observable<ResponseStatement>{
+    return this.httpClient.get<ResponseStatement>(`${this.baseURL}/comment/${idComment}`);
+  }
 }
