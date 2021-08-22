@@ -1,43 +1,42 @@
-<app-upper-bar></app-upper-bar>
-<div class = "container">
-    <h3> Detalles de grupo </h3>
-    <div>
-        <div>
-            <label> <b> Nombre: </b></label> {{group.name}}
-        </div>    
+<div id = "page-container">
+    <div id = "content-wrap">
+        <app-upper-bar></app-upper-bar>
+        <div class = "container">
+            <h3> Detalles de grupo </h3>
+            <div>
+                <div>
+                    <label> <b> Nombre: </b></label> {{group.name}}
+                </div>    
+            </div>
+            <div>
+                <h3>Usuarios del grupo</h3>
+                <table class = "table table-striped">
+                    <thead>
+                        <tr>                
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>Email</th>
+                            <th>Tipo </th>
+                            <th *ngIf = "rol == 2 || rol == 111">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor = "let user of users">                
+                            <td>{{ user.firstName }}</td>
+                            <td>{{ user.lastName }}</td>
+                            <td>{{ user.email }}</td>
+                            <td *ngIf = "user.typeUser == 1">Alumno</td>
+                            <td *ngIf = "user.typeUser == 2">Profesor</td>
+                            <td>
+                                <!--<button (click) = "updateUser(user.id)" class = "btn btn-info"> Modificar</button>
+                                <button (click) = "deleteUser(user.id)" class = "btn btn-danger" style ="margin-left: 10px"> Eliminar</button>-->
+                                <button (click) = "userDetails(user.id)" class = "btn btn-info" style ="margin-left: 10px" *ngIf = "rol == 2 || rol == 111"> Detalles</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <div>
-        <h3>Usuarios del grupo</h3>
-        <table class = "table table-striped">
-            <thead>
-                <tr>                
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Email</th>
-                    <th>Tipo </th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor = "let user of users">                
-                    <td>{{ user.firstName }}</td>
-                    <td>{{ user.lastName }}</td>
-                    <td>{{ user.email }}</td>
-                    <td *ngIf = "user.typeUser == 1">Alumno</td>
-                    <td *ngIf = "user.typeUser == 2">Profesor</td>
-                    <td>
-                        <!--<button (click) = "updateUser(user.id)" class = "btn btn-info"> Modificar</button>
-                        <button (click) = "deleteUser(user.id)" class = "btn btn-danger" style ="margin-left: 10px"> Eliminar</button>-->
-                        <button (click) = "userDetails(user.id)" class = "btn btn-info" style ="margin-left: 10px"> Detalles</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <app-bottom-bar></app-bottom-bar>
 </div>
-
-<footer class = "py-3 bg-dark text-light">
-    <div class = "container">
-      <span>Parte inferior</span>
-    </div>
-</footer>

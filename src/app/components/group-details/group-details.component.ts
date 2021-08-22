@@ -13,6 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 export class GroupDetailsComponent implements OnInit {
 
   id: number;
+  rol:number;
   group: Group = new Group();
   users: User[] = [];
   constructor(private route: ActivatedRoute, private router: Router,
@@ -20,6 +21,7 @@ export class GroupDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+    this.rol = Number(sessionStorage.getItem("rol"));
     this.groupService.getGroupById(this.id).subscribe( data => {
       this.group = data;
     });

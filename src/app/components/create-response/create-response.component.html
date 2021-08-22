@@ -50,7 +50,7 @@
             <div class="form-check" *ngFor = "let response of responseAnswers; let i = index" >
                 
                 
-                <!--<input type="radio" class="form-check-input" id="correct{{i}}" name = "correct" [value] = "true" [(ngModel)]= "response.correct">-->
+                <input type="checkbox" class="form-check-input" id="correct{{i}}" name = "correct{{i}}" [value] = "" [(ngModel)]= "response.correct" >
                 <textarea id="answer{{i}}" class="form-control"
                     [(ngModel)] = "response.answer" name = "answer{{i}}" rows = "3" min = "5" required></textarea>
             </div>

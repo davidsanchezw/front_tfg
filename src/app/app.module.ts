@@ -24,6 +24,7 @@ import { CreateCommentComponent } from './components/create-comment/create-comme
 import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { CreateResponseFinalComponent } from './components/create-response-final/create-response-final.component';
 import { CreateCommentFinalComponent } from './components/create-comment-final/create-comment-final.component';
+import { BottomBarComponent } from './components/bottom-bar/bottom-bar.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { CreateCommentFinalComponent } from './components/create-comment-final/c
     CreateCommentComponent,
     CommentListComponent,
     CreateResponseFinalComponent,
-    CreateCommentFinalComponent    
+    CreateCommentFinalComponent,
+    BottomBarComponent    
   ],
   imports: [
     BrowserModule,
