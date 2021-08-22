@@ -43,4 +43,8 @@ export class CommentService {
   getCommentById(idComment: number):Observable<Comment>{
     return this.httpClient.get<Comment>(`${this.baseURL}/${idComment}`);
   }
+
+  getCommentByResponseStatement(idResponseStatement: number):Observable<Comment[]>{
+    return this.httpClient.get<Comment[]>(`${this.baseURL}/responseStatement/${idResponseStatement}`);
+  }
 }

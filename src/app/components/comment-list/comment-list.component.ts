@@ -44,6 +44,10 @@ export class CommentListComponent implements OnInit {
     this.router.navigate(['create-comment', idComment]);
   }
 
+  goToCreateCommentFinal(idComment:number){
+    this.router.navigate(['create-comment-final', idComment]);
+  }
+
   getTaskByID(){
     this.idTask = this.route.snapshot.params['id'];
     this.taskService.getTaskById(this.idTask).subscribe(data => {

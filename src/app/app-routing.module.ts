@@ -16,6 +16,9 @@ import { UpdateTaskComponent } from './components/update-task/update-task.compon
 import { CreateResponseComponent } from './components/create-response/create-response.component';
 import { CreateCommentComponent } from './components/create-comment/create-comment.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
+import { CreateResponseFinalComponent } from './components/create-response-final/create-response-final.component';
+import { CreateCommentFinalComponent } from './components/create-comment-final/create-comment-final.component';
+
 
 
 
@@ -37,7 +40,9 @@ const routes: Routes = [
   {path: 'update-task/:id', component: UpdateTaskComponent},
   {path: 'create-response/:id', component: CreateResponseComponent},
   {path: 'create-comment/:id', component: CreateCommentComponent},
-  {path: 'comment-list/:id', component: CommentListComponent}
+  {path: 'comment-list/:id', component: CommentListComponent},  
+  {path: 'create-response-final/:id', component: CreateResponseFinalComponent},
+  {path: 'create-comment-final/:id', component: CreateCommentFinalComponent}
 ];
 
 @NgModule({

@@ -61,4 +61,8 @@ export class TaskListComponent implements OnInit {
   goToCommentsList(idTask: number){
     this.router.navigate(['comment-list', idTask]);
   }
+
+  createResponseFinal(idTask: number){
+    this.router.navigate(['create-response-final', idTask]);
+  }
 }
