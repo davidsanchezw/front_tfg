@@ -49,3 +49,11 @@
     box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
     cursor: pointer;
   }
+
+  #page-container {
+    position: relative;
+    min-height: 100vh;
+}  
+#content-wrap {
+    padding-bottom: 2.5rem;    /* Footer height */
+}

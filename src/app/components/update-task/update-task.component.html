@@ -1,105 +1,100 @@
-<app-upper-bar></app-upper-bar>
-<div class= "col-md-8 offset-md-3">
-    <h3> Ver/Editar tarea </h3>
-    <form (ngSubmit) = "onSubmit()">
+<div id="page-container">
+  <div id="content-wrap">
+    <app-upper-bar></app-upper-bar>
+    <div class="col-md-8 offset-md-3">
+      <h3> Ver/Editar tarea </h3>
+      <form (ngSubmit)="onSubmit()">
         <div class="form-group">
-            <label>Título</label>
-            <input type="text" class="form-control" id="title"
-                [(ngModel)] = "task.title" name = "title">
+          <label>Título</label>
+          <input type="text" class="form-control" id="title" [(ngModel)]="task.title" name="title">
         </div>
         <div class="form-group">
-            <label for = "statement">Enunciado</label>
-            <textarea id="statement" class="form-control"
-                [(ngModel)] = "task.statement" id = "statement" name = "statement" rows = "3" min = "5"></textarea>
+          <label for="statement">Enunciado</label>
+          <textarea id="statement" class="form-control" [(ngModel)]="task.statement" id="statement" name="statement"
+            rows="3" min="5"></textarea>
         </div>
         <div class="form-group">
-            <label>Numero de reviews</label>
-            <input type="number" class="form-control" id="reviews"
-                [(ngModel)] = "task.reviews" name = "reviews" min="3">
-        </div>
-
-        <div class="form-group">
-            <label>Forma de trabajo</label>
-            <div>
-                <p *ngIf = "task.typeIdentity == 1"> Individual</p>
-                <p *ngIf = "task.typeIdentity == 2"> En equipo</p>
-                
-            </div>
+          <label>Numero de reviews</label>
+          <input type="number" class="form-control" id="reviews" [(ngModel)]="task.reviews" name="reviews" min="3">
         </div>
 
-        <div class="form-group" *ngIf = "task.typeIdentity == 2">
-            <label>Número de componentes de equipo</label>
-            <!--<input type="number" class="form-control" id="team"
+        <div class="form-group">
+          <label>Forma de trabajo</label>
+          <div>
+            <p *ngIf="task.typeIdentity == 1"> Individual</p>
+            <p *ngIf="task.typeIdentity == 2"> En equipo</p>
+
+          </div>
+        </div>
+
+        <div class="form-group" *ngIf="task.typeIdentity == 2">
+          <label>Número de componentes de equipo</label>
+          <!--<input type="number" class="form-control" id="team"
                 name = "team" min = "1" max = "5" [(ngModel)]= "numberTeam"> -->
         </div>
 
         <div class="form-group">
-            <label>Tipo de tarea</label>
-            <div>
-                <p *ngIf = "task.typeTask == 1"> Desarrollo </p>
-                <p *ngIf = "task.typeTask == 2"> Test </p>
-            </div>
+          <label>Tipo de tarea</label>
+          <div>
+            <p *ngIf="task.typeTask == 1"> Desarrollo </p>
+            <p *ngIf="task.typeTask == 2"> Test </p>
+          </div>
         </div>
 
-        <div class="form-group" *ngIf = "task.typeTask == 2">
-            <label>Número de respuestas</label>
-            <input type="number" class="form-control" id="answers"
-                [(ngModel)] = "task.answers" name = "answers" min = "1" value= "1">
+        <div class="form-group" *ngIf="task.typeTask == 2">
+          <label>Número de respuestas</label>
+          <input type="number" class="form-control" id="answers" [(ngModel)]="task.answers" name="answers" min="1"
+            value="1">
         </div>
 
-        <div class = "container">
-            <h3>Fechas</h3>
-            <label>Fecha de entrega inicial</label>
-            <div class="form-group">
-                <input type="date" id="presentation" name="presentation"
-                [(ngModel)] = "scheduleTime.presentation">
-            </div>
-            <label>Fecha de revisión inicial</label>
-            <div class="form-group">
-                <input type="date" id="revision" name="revision"
-                [(ngModel)] = "scheduleTime.revision">
-            </div>
+        <div class="container">
+          <h3>Fechas</h3>
+          <label>Fecha de entrega inicial</label>
+          <div class="form-group">
+            <input type="date" id="presentation" name="presentation" [(ngModel)]="scheduleTime.presentation">
+          </div>
+          <label>Fecha de revisión inicial</label>
+          <div class="form-group">
+            <input type="date" id="revision" name="revision" [(ngModel)]="scheduleTime.revision">
+          </div>
 
-            <label>Fecha de entrega final</label>
-            <div class="form-group">
-                <input type="date" id="finalPresentation" name="finalPresentation"
-                [(ngModel)] = "scheduleTime.finalPresentation">
-            </div>
-            <label>Fecha de revisión final</label>
-            <div class="form-group">
-                <input type="date" id="finalRevision" name="finalRevision"
-                [(ngModel)] = "scheduleTime.finalRevision">
-            </div>
+          <label>Fecha de entrega final</label>
+          <div class="form-group">
+            <input type="date" id="finalPresentation" name="finalPresentation"
+              [(ngModel)]="scheduleTime.finalPresentation">
+          </div>
+          <label>Fecha de revisión final</label>
+          <div class="form-group">
+            <input type="date" id="finalRevision" name="finalRevision" [(ngModel)]="scheduleTime.finalRevision">
+          </div>
         </div>
-        
 
-        <button class = "btn btn-success" type ="submit">Actualizar tarea</button>
-    </form>
-</div>
-<div class="col-md-8 offset-md-3" *ngIf = "task.typeIdentity == 2">
-    <h2>Equipos</h2>
-    <table class = "table table-striped" *ngFor="let team of teams">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>                    
-            <tr *ngFor = "let user of team.users"> 
-                <td>{{ user.firstName }}</td>
-                <td>{{ user.lastName }}</td>
-                <td>                
-                    <button (click) = "userDetails(user.id)" class = "btn btn-info" style ="margin-left: 10px"> Detalles</button>
-                </td>
-            </tr>                    
-        </tbody>
-    </table>
-</div>
 
-<footer class = "py-3 bg-dark text-light">
-    <div class = "container">
-      <span>Parte inferior</span>
+        <button class="btn btn-success" type="submit">Actualizar tarea</button>
+      </form>
     </div>
-</footer>
+    <div class="col-md-8 offset-md-3" *ngIf="task.typeIdentity == 2">
+      <h2>Equipos</h2>
+      <table class="table table-striped" *ngFor="let team of teams">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of team.users">
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>
+              <button (click)="userDetails(user.id)" class="btn btn-info" style="margin-left: 10px"> Detalles</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <app-bottom-bar></app-bottom-bar>
+</div>

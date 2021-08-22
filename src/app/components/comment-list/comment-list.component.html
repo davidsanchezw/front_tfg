@@ -1,63 +1,63 @@
-<app-upper-bar></app-upper-bar>
-<div class= "col-md-8 offset-md-3">
-    <div class="form-group">
+<div id="page-container">
+  <div id="content-wrap">
+    <app-upper-bar></app-upper-bar>
+    <div class="col-md-8 offset-md-3">
+      <div class="form-group">
         <p>Título {{task.title}}</p>
         <p>Enunciado {{task.statement}}</p>
-        <p *ngIf = "task.typeIdentity == 1">Forma de trabajo Individual</p>
-        <p *ngIf = "task.typeIdentity == 2">Forma de trabajo En equipo</p>
-        <p *ngIf = "task.typeTask == 1">Tipo de trabajo Desarrollo</p>
-        <p *ngIf = "task.typeTask == 2">Tipo de trabajo Test</p>
+        <p *ngIf="task.typeIdentity == 1">Forma de trabajo Individual</p>
+        <p *ngIf="task.typeIdentity == 2">Forma de trabajo En equipo</p>
+        <p *ngIf="task.typeTask == 1">Tipo de trabajo Desarrollo</p>
+        <p *ngIf="task.typeTask == 2">Tipo de trabajo Test</p>
         <p>Número de revisiones {{task.reviews}}</p>
         <p>Entrega respuesta inicial {{scheduleTime.presentation}}</p>
         <p>Entrega reviews {{scheduleTime.revision}}</p>
         <p>Entrega respuesta final {{scheduleTime.finalPresentation}}</p>
         <p>Entrega reviews finales {{scheduleTime.finalRevision}}</p>
-    </div>
+      </div>
 
-    <div *ngIf = "task.typeIdentity == 2">
+      <div *ngIf="task.typeIdentity == 2">
         <h3>Mi equipo</h3>
-        <table class = "table table-striped">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                </tr>
-            </thead>
-            <tbody>                    
-                <tr *ngFor = "let user of team.users"> 
-                    <td>{{ user.firstName }}</td>
-                    <td>{{ user.lastName }}</td>                
-                </tr>                    
-            </tbody>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Apellido</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of team.users">
+              <td>{{ user.firstName }}</td>
+              <td>{{ user.lastName }}</td>
+            </tr>
+          </tbody>
         </table>
-    </div>
+      </div>
 
-    <div class = "container">
+      <div class="container">
         <h2>Lista de comentarios</h2>
-        <table class = "table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>                    
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor = "let comment of comments; let i = index">
-                    <td>{{ comment.id }}</td>
-                    <td>Comentario {{ i + 1 }}</td>                    
-                    <td>
-                        <button (click) = "goToCreateComment(comment.id)" class = "btn btn-info"> Completar</button>
-                        <button (click) = "goToCreateCommentFinal(comment.id)" class = "btn btn-info"> Completar final</button>
-                    </td>
-                </tr>
-            </tbody>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let comment of comments; let i = index">
+              <td>{{ comment.id }}</td>
+              <td>Comentario {{ i + 1 }}</td>
+              <td>
+                <button (click)="goToCreateComment(comment.id)" class="btn btn-info"> Completar</button>
+                <button (click)="goToCreateCommentFinal(comment.id)" class="btn btn-info"> Completar final</button>
+              </td>
+            </tr>
+          </tbody>
         </table>
+      </div>
+
     </div>
-    
+  </div>
+  <app-bottom-bar></app-bottom-bar>
 </div>
-<footer class = "py-3 bg-dark text-light">
-    <div class = "container">
-      <span>Parte inferior</span>
-    </div>
-</footer>

@@ -1,96 +1,96 @@
-<app-upper-bar></app-upper-bar>
+<div id="page-container">
+  <div id="content-wrap">
+    <app-upper-bar></app-upper-bar>
 
-<div class= "col-md-8 offset-md-3">
-    <h3> Respuesta </h3>
-    <form (ngSubmit) = "onSubmit()">
+    <div class="col-md-8 offset-md-3">
+      <h3> Respuesta </h3>
+      <form (ngSubmit)="onSubmit()">
         <div class="form-group">
-            <p>Título {{task.title}}</p>
-            <p>Enunciado {{task.statement}}</p>
-            <p *ngIf = "task.typeIdentity == 1">Forma de trabajo Individual</p>
-            <p *ngIf = "task.typeIdentity == 2">Forma de trabajo En equipo</p>
-            <p>Entrega respuesta inicial {{scheduleTime.presentation}}</p>
-            <p>Entrega reviews {{scheduleTime.revision}}</p>
-            <p>Entrega respuesta final {{scheduleTime.finalPresentation}}</p>
-            <p>Entrega reviews finales {{scheduleTime.finalRevision}}</p>
+          <p>Título {{task.title}}</p>
+          <p>Enunciado {{task.statement}}</p>
+          <p *ngIf="task.typeIdentity == 1">Forma de trabajo Individual</p>
+          <p *ngIf="task.typeIdentity == 2">Forma de trabajo En equipo</p>
+          <p>Entrega respuesta inicial {{scheduleTime.presentation}}</p>
+          <p>Entrega reviews {{scheduleTime.revision}}</p>
+          <p>Entrega respuesta final {{scheduleTime.finalPresentation}}</p>
+          <p>Entrega reviews finales {{scheduleTime.finalRevision}}</p>
         </div>
 
-        <div *ngIf = "task.typeIdentity == 2">
-            <h3>Equipo</h3>
-            <table class = "table table-striped">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                    </tr>
-                </thead>
-                <tbody>                    
-                    <tr *ngFor = "let user of team.users"> 
-                        <td>{{ user.firstName }}</td>
-                        <td>{{ user.lastName }}</td>                
-                    </tr>                    
-                </tbody>
-            </table>
+        <div *ngIf="task.typeIdentity == 2">
+          <h3>Equipo</h3>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of team.users">
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <div class="form-group">
-            <label for = "statement">Enunciado</label>
-            <textarea id="statement" class="form-control"
-                [(ngModel)] = "responseStatement.statement" id = "statement" name = "statement" rows = "3" min = "5" required></textarea>
+          <label for="statement">Enunciado</label>
+          <textarea id="statement" class="form-control" [(ngModel)]="responseStatement.statement" id="statement"
+            name="statement" rows="3" min="5" required></textarea>
         </div>
 
-        <div class="form-group" *ngIf = "task.typeTask == 1">
-            <label for = "answer">Solución</label>
-            <textarea id="answer" class="form-control"
-                [(ngModel)] = "responseAnswer.answer" id = "answer" name = "answer" rows = "3" min = "5" required></textarea>
-        </div>        
-
-        
-        <div *ngIf = "task.typeTask == 2">
-            <h3>Solución</h3>
-            
-            <div class="form-check" *ngFor = "let response of responseAnswers; let i = index" >
-                
-                
-                <!--<input type="radio" class="form-check-input" id="correct{{i}}" name = "correct" [value] = "true" [(ngModel)]= "response.correct">-->
-                <textarea id="answer{{i}}" class="form-control"
-                    [(ngModel)] = "response.answer" name = "answer{{i}}" rows = "3" min = "5" required></textarea>
-            </div>
+        <div class="form-group" *ngIf="task.typeTask == 1">
+          <label for="answer">Solución</label>
+          <textarea id="answer" class="form-control" [(ngModel)]="responseAnswer.answer" id="answer" name="answer"
+            rows="3" min="5" required></textarea>
         </div>
-        <button class = "btn btn-success" type ="submit">Modificar</button>
+
+
+        <div *ngIf="task.typeTask == 2">
+          <h3>Solución</h3>
+
+          <div class="form-check" *ngFor="let response of responseAnswers; let i = index">
+
+
+            <!--<input type="radio" class="form-check-input" id="correct{{i}}" name = "correct" [value] = "true" [(ngModel)]= "response.correct">-->
+            <textarea id="answer{{i}}" class="form-control" [(ngModel)]="response.answer" name="answer{{i}}" rows="3"
+              min="5" required></textarea>
+          </div>
+        </div>
+        <button class="btn btn-success" type="submit">Modificar</button>
         <div class="form-group">
-            Última modificación: {{responseStatement.lastTime}}
+          Última modificación: {{responseStatement.lastTime}}
         </div>
 
-        
-
-        
-    </form>
 
 
 
-    <table class = "table table-striped">
+      </form>
+
+
+
+      <table class="table table-striped">
         <thead>
-            <tr>
-                <th>id</th>
-                <th>Comentarios</th>
-                <th>Acciones</th>
-            </tr>
+          <tr>
+            <th>id</th>
+            <th>Comentarios</th>
+            <th>Acciones</th>
+          </tr>
         </thead>
         <tbody>
-            <tr *ngFor = "let comment of comments">
-                <td>{{ comment.id }}</td>
-                <td>{{ comment.commentText }}</td>
-                
-                <td>
-                    <!--<button (click) = "updateGroup(group.id)" class = "btn btn-info" *ngIf = "rol == 111"> Modificar</button>-->
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+          <tr *ngFor="let comment of comments">
+            <td>{{ comment.id }}</td>
+            <td>{{ comment.commentText }}</td>
 
-<footer class = "py-3 bg-dark text-light">
-    <div class = "container">
-      <span>Parte inferior</span>
+            <td>
+              <!--<button (click) = "updateGroup(group.id)" class = "btn btn-info" *ngIf = "rol == 111"> Modificar</button>-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-</footer>
+
+  </div>
+  <app-bottom-bar></app-bottom-bar>
+</div>

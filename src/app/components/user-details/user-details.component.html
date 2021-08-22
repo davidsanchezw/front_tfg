@@ -1,38 +1,37 @@
-<app-upper-bar></app-upper-bar>
-<div class = "container">
-    <h3> Detalles de usuario </h3>
-    <div>
-        <div>
-            <label> <b> Nombre: </b></label> {{user.firstName}}
-        </div>
-        <div>
-            <label> <b> Apellidos: </b></label> {{user.lastName}}
-        </div>
-        <div>
-            <label> <b> Email: </b></label> {{user.email}}
-        </div>
-        <div *ngIf = "me == id">
-            <label> <b> Contraseña: </b></label>
-            <form class="custom-form">
-                
-                <input
-                  type="password"
-                  [(ngModel)]="user.hash"
-                  name="password"
-                  placeholder="Contraseña antigua"
-                  required="required"
-                />
-                <button type="submit" (click)="changePassword()">Cambiar</button>
-              </form>
-        </div>
-        <div>
-            <label> <b> Tipo de usuario: </b></label> {{user.typeUser}}
+<div id = "page-container">
+    <div id = "content-wrap">
+        <app-upper-bar></app-upper-bar>
+        <div class = "container">
+            <h3> Detalles de usuario </h3>
+            <div>
+                <div>
+                    <label> <b> Nombre: </b></label> {{user.firstName}}
+                </div>
+                <div>
+                    <label> <b> Apellidos: </b></label> {{user.lastName}}
+                </div>
+                <div>
+                    <label> <b> Email: </b></label> {{user.email}}
+                </div>
+                <div *ngIf = "me == id">
+                    <label> <b> Contraseña: </b></label>
+                    <form class="custom-form">
+                        
+                        <input
+                        type="password"
+                        [(ngModel)]="user.hash"
+                        name="password"
+                        placeholder="Contraseña antigua"
+                        required="required"
+                        />
+                        <button type="submit" (click)="changePassword()">Cambiar</button>
+                    </form>
+                </div>
+                <div>
+                    <label> <b> Tipo de usuario: </b></label> {{user.typeUser}}
+                </div>
+            </div>
         </div>
     </div>
+    <app-bottom-bar></app-bottom-bar>
 </div>
-
-<footer class = "py-3 bg-dark text-light">
-    <div class = "container">
-      <span>Parte inferior</span>
-    </div>
-</footer>

@@ -1,37 +1,37 @@
-<app-upper-bar></app-upper-bar>
+<div id="page-container">
+  <div id="content-wrap">
+    <app-upper-bar></app-upper-bar>
 
-<div class= "col-md-8 offset-md-3">
-    <h3> Modificar usuario </h3>
-    <form (ngSubmit) = "onSubmit()">
-
-        <div class="form-group">
-            <label>Nombre</label>
-            <input type="text" class="form-control" id="firstName"
-                [(ngModel)] = "user.firstName" name = "firstName">
-        </div>
-        <div class="form-group">
-            <label>Apellidos</label>
-            <input type="text" class="form-control" id="lastName"
-                [(ngModel)] = "user.lastName" name = "lastName">
-        </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control" id="email"
-                [(ngModel)] = "user.email" name = "email">
-        </div>
+    <div class="col-md-8 offset-md-3">
+      <h3> Modificar usuario </h3>
+      <form (ngSubmit)="onSubmit()">
 
         <div class="form-group">
-            <label>Contraseña</label>
-            <input type="text" class="form-control" id="hash"
-                [(ngModel)] = "user.hash" name = "hash">
+          <label>Nombre</label>
+          <input type="text" class="form-control" id="firstName" [(ngModel)]="user.firstName" name="firstName">
+        </div>
+        <div class="form-group">
+          <label>Apellidos</label>
+          <input type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName" name="lastName">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" class="form-control" id="email" [(ngModel)]="user.email" name="email">
         </div>
 
         <div class="form-group">
-            <label>Tipo</label>
-            <input type="number" class="form-control" id="typeUser"
-                [(ngModel)] = "user.typeUser" name = "typeUser">
+          <label>Contraseña</label>
+          <input type="text" class="form-control" id="hash" [(ngModel)]="user.hash" name="hash">
         </div>
 
-        <button class = "btn btn-success" type ="submit">Submit</button>
-    </form>
+        <div class="form-group">
+          <label>Tipo</label>
+          <input type="number" class="form-control" id="typeUser" [(ngModel)]="user.typeUser" name="typeUser">
+        </div>
+
+        <button class="btn btn-success" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  <app-bottom-bar></app-bottom-bar>
 </div>

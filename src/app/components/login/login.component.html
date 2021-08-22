@@ -1,21 +1,14 @@
-<div class="login">
-    <form class="custom-form">
-      <h1>Autenticación</h1>
-      <!--Cambiar type a email-->
-      <input
-        type="text" 
-        [(ngModel)]="user.email"
-        name="email"
-        placeholder="Correo"
-        required="required"
-      />
-      <input
-        type="password"
-        [(ngModel)]="user.hash"
-        name="password"
-        placeholder="Contraseña"
-        required="required"
-      />
-      <button type="submit" (click)="login()">Entrar</button>
-    </form>
+<div id="page-container">
+  <div id="content-wrap">
+    <div class="login">
+      <form class="custom-form">
+        <h1>Autenticación</h1>
+        <!--Cambiar type a email-->
+        <input type="text" [(ngModel)]="user.email" name="email" placeholder="Correo" required="required" />
+        <input type="password" [(ngModel)]="user.hash" name="password" placeholder="Contraseña" required="required" />
+        <button type="submit" (click)="login()">Entrar</button>
+      </form>
+    </div>
   </div>
+  <app-bottom-bar></app-bottom-bar>
+</div>

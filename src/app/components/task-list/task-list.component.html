@@ -1,30 +1,40 @@
-<app-upper-bar></app-upper-bar>
-<div class = "container">
-    <h2>Tareas del grupo <b>{{ group.name }}</b></h2>
-    <button (click) = "newTask(group.id)" class = "btn btn-warning" style ="margin-left: 10px" *ngIf = "rol == 2"> Nueva tarea</button>
-    <table class = "table table-striped">
+<div id="page-container">
+  <div id="content-wrap">
+    <app-upper-bar></app-upper-bar>
+    <div class="container">
+      <h2>Tareas del grupo <b>{{ group.name }}</b></h2>
+      <button (click)="newTask(group.id)" class="btn btn-warning" style="margin-left: 10px" *ngIf="rol == 2"> Nueva
+        tarea</button>
+      <table class="table table-striped">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Título</th>
-                <th>Próxima fecha</th>
-                <th>Acciones</th>
-            </tr>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Próxima fecha</th>
+            <th>Acciones</th>
+          </tr>
         </thead>
         <tbody>
-            <tr *ngFor = "let task of tasks">
-              <script> this.getScheduleTime(task.id)</script>
-                <td>{{ task.id }}</td>
-                <td>{{ task.title }}</td>                
-                <td>{{ task.scheduleTime.presentation }}</td>
-                <td>
-                    <button (click) = "updateTask(task.id)" class = "btn btn-info" *ngIf = "rol == 2"> Ver/Editar</button>
-                    <button (click) = "createResponse(task.id)" class = "btn btn-info" *ngIf = "rol == 1"> Crear/Modificar respuesta</button>
-                    <button (click) = "goToCommentsList(task.id)" class = "btn btn-secondary" *ngIf = "rol == 1"> Ver lista de reviews</button>
-                    <button (click) = "createResponseFinal(task.id)" class = "btn btn-danger" *ngIf = "rol == 1"> Crear/Modificar respuesta final</button>
-                    <button (click) = "goToCommentsList(task.id)" class = "btn btn-danger" *ngIf = "rol == 1"> Crear/Modificar reviews final</button>
+          <tr *ngFor="let task of tasks">
+            <script>
+              this.getScheduleTime(task.id)
 
-                    <!--Si no ha llegado el primero -> respuesta || COMPROBAR TBN EN EL PROPIO OCMPONENTE
+            </script>
+            <td>{{ task.id }}</td>
+            <td>{{ task.title }}</td>
+            <td>{{ task.scheduleTime.presentation }}</td>
+            <td>
+              <button (click)="updateTask(task.id)" class="btn btn-info" *ngIf="rol == 2"> Ver/Editar</button>
+              <button (click)="createResponse(task.id)" class="btn btn-info" *ngIf="rol == 1"> Crear/Modificar
+                respuesta</button>
+              <button (click)="goToCommentsList(task.id)" class="btn btn-secondary" *ngIf="rol == 1"> Ver lista de
+                reviews</button>
+              <button (click)="createResponseFinal(task.id)" class="btn btn-danger" *ngIf="rol == 1"> Crear/Modificar
+                respuesta final</button>
+              <button (click)="goToCommentsList(task.id)" class="btn btn-danger" *ngIf="rol == 1"> Crear/Modificar
+                reviews final</button>
+
+              <!--Si no ha llegado el primero -> respuesta || COMPROBAR TBN EN EL PROPIO OCMPONENTE
                         Si pasa primero -> hacer revisiones
                         Si pasa segundo -> respuesta
                         Si pasa tercero -> hacer revisiones
@@ -36,14 +46,12 @@
                     <button (click) = "deleteGroup(group.id)" class = "btn btn-danger" style ="margin-left: 10px" *ngIf = "rol == 111"> Eliminar</button>
                     <button (click) = "goToTasks(group.id)" class = "btn btn-info" style ="margin-left: 10px"> Tareas</button>
                     <button (click) = "groupDetails(group.id)" class = "btn btn-secondary" style ="margin-left: 10px"> Detalles</button> -->
-                </td>
-            </tr>
+            </td>
+          </tr>
         </tbody>
-    </table>
-</div>
-
-<footer class = "py-3 bg-dark text-light">
-    <div class = "container">
-      <span>Parte inferior</span>
+      </table>
     </div>
-</footer>
+
+  </div>
+  <app-bottom-bar></app-bottom-bar>
+</div>
