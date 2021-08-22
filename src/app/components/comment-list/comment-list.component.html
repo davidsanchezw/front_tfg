@@ -1,19 +1,63 @@
 <div id="page-container">
   <div id="content-wrap">
     <app-upper-bar></app-upper-bar>
-    <div class="col-md-8 offset-md-3">
-      <div class="form-group">
-        <p>Título {{task.title}}</p>
-        <p>Enunciado {{task.statement}}</p>
-        <p *ngIf="task.typeIdentity == 1">Forma de trabajo Individual</p>
-        <p *ngIf="task.typeIdentity == 2">Forma de trabajo En equipo</p>
-        <p *ngIf="task.typeTask == 1">Tipo de trabajo Desarrollo</p>
-        <p *ngIf="task.typeTask == 2">Tipo de trabajo Test</p>
-        <p>Número de revisiones {{task.reviews}}</p>
-        <p>Entrega respuesta inicial {{scheduleTime.presentation}}</p>
-        <p>Entrega reviews {{scheduleTime.revision}}</p>
-        <p>Entrega respuesta final {{scheduleTime.finalPresentation}}</p>
-        <p>Entrega reviews finales {{scheduleTime.finalRevision}}</p>
+    <div class="container">
+      <h3>Tarea</h3>
+      <div class="container">
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <td class="text-center"><b>Título</b></td>
+            </tr>
+            <tr>
+              <td>{{task.title}}</td>
+            </tr>
+            <tr>
+              <td class="text-center"><b>Enunciado</b></td>
+            </tr>
+            <tr>
+              <td>{{task.statement}}</td>
+            </tr>
+            <tr>
+              <td class="text-center"><b>Forma de trabajo</b></td>
+            </tr>
+            <tr>
+              <td *ngIf="task.typeIdentity == 1">Individual</td>
+              <td *ngIf="task.typeIdentity == 2">En equipo</td>
+            </tr>
+            <tr>
+              <td class="text-center"><b>Tipo de trabajo</b></td>
+            </tr>
+            <tr>
+              <td *ngIf="task.typeIdentity == 1">Desarrollo</td>
+              <td *ngIf="task.typeIdentity == 2">Test</td>
+            </tr>  
+            <tr>
+              <td class="text-center"><b>Entrega reviews</b></td>
+            </tr>
+            <tr>
+              <td>{{scheduleTime.revision}}</td>
+            </tr>            
+            <tr>
+              <td class="text-center"><b>Entrega reviews finales</b></td>
+            </tr>
+            <tr>
+              <td>{{scheduleTime.finalRevision}}</td>
+            </tr>
+            <tr>
+              <td class="text-center"><b>Entrega reviews finales</b></td>
+            </tr>
+            <tr>
+              <td>{{scheduleTime.finalRevision}}</td>
+            </tr>
+            <tr>
+              <td class="text-center"><b>Número de revisiones</b></td>
+            </tr>
+            <tr>
+              <td><b>{{task.reviews}}</b></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <div *ngIf="task.typeIdentity == 2">

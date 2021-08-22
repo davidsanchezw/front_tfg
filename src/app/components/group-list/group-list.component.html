@@ -1,18 +1,17 @@
 <div id = "page-container">    
     <app-upper-bar></app-upper-bar>
     <div class = "container" id = "content-wrap">
-        <h2>Datos de grupos</h2>
+        <div class = "nav-bar"></div>
+        <h2>Grupos</h2>
         <table class = "table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Nombre</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor = "let group of groups">
-                    <td>{{ group.id }}</td>
                     <td>{{ group.name }}</td>
                     
                     <td>

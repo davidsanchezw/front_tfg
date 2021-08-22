@@ -2,34 +2,41 @@
     <div id = "content-wrap">
         <app-upper-bar></app-upper-bar>
         <div class = "container">
-            <h3> Detalles de usuario </h3>
-            <div>
-                <div>
-                    <label> <b> Nombre: </b></label> {{user.firstName}}
-                </div>
-                <div>
-                    <label> <b> Apellidos: </b></label> {{user.lastName}}
-                </div>
-                <div>
-                    <label> <b> Email: </b></label> {{user.email}}
-                </div>
-                <div *ngIf = "me == id">
-                    <label> <b> Contraseña: </b></label>
-                    <form class="custom-form">
+            <h3> Detalles de usuario </h3>            
+            <div class= "container">
+                <table class = "table table-striped">
+                    <tbody>
+                    <tr>
+                        <td><b>Nombre</b></td><td>{{user.firstName}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Apellidos</b></td><td>{{user.lastName}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Email</b></td><td>{{user.email}}</td>
+                    </tr>
+
+                    <tr *ngIf = "me == id">
+                        <td><b>Contraseña</b></td><td><form class="custom-form">
                         
-                        <input
-                        type="password"
-                        [(ngModel)]="user.hash"
-                        name="password"
-                        placeholder="Contraseña antigua"
-                        required="required"
-                        />
-                        <button type="submit" (click)="changePassword()">Cambiar</button>
-                    </form>
-                </div>
-                <div>
-                    <label> <b> Tipo de usuario: </b></label> {{user.typeUser}}
-                </div>
+                            <input
+                            type="password"
+                            [(ngModel)]="user.hash"
+                            name="password"
+                            placeholder="Contraseña antigua"
+                            required="required"
+                            />
+                            <button type="submit" (click)="changePassword()">Cambiar</button>
+                        </form></td>
+                    </tr>
+                    <tr>
+                        <td><b>Tipo de usuario</b></td>
+                        <td *ngIf = "user.typeUser == 1">Alumno</td>
+                        <td *ngIf = "user.typeUser == 2">Profesor</td>
+                        <td *ngIf = "user.typeUser == 111">Admin</td>
+                    </tr>
+                </tbody>
+                </table>
             </div>
         </div>
     </div>

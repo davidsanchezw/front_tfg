@@ -2,13 +2,9 @@
     <div id = "content-wrap">
         <app-upper-bar></app-upper-bar>
         <div class = "container">
-            <h3> Detalles de grupo </h3>
-            <div>
-                <div>
-                    <label> <b> Nombre: </b></label> {{group.name}}
-                </div>    
-            </div>
-            <div>
+            <h2> Detalles de <b>{{group.name}}</b> </h2>
+            
+            <div class = "container">
                 <h3>Usuarios del grupo</h3>
                 <table class = "table table-striped">
                     <thead>

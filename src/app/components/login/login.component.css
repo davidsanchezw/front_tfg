@@ -1,4 +1,4 @@
-* {
+ *{
     box-sizing: border-box;
   }
   html,
@@ -39,9 +39,9 @@
     letter-spacing: 0.15em;
     border: none;
     font-size: 0.875rem;
-    color: #ffffff;
+    color: #c3f7f4;
     font-weight: bold;
-    background-color: #bcd8c1;
+    background-color: #524ff1;
     width: 100%;
     display: block;
     padding: 0.875rem 1rem;
@@ -56,4 +56,10 @@
 }  
 #content-wrap {
     padding-bottom: 2.5rem;    /* Footer height */
+}
+
+#upper_bar {
+  background-color: #001d85;
+  height: 30px;
+  width: 100%;
 }
