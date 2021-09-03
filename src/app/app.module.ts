@@ -25,6 +25,10 @@ import { CommentListComponent } from './components/comment-list/comment-list.com
 import { CreateResponseFinalComponent } from './components/create-response-final/create-response-final.component';
 import { CreateCommentFinalComponent } from './components/create-comment-final/create-comment-final.component';
 import { BottomBarComponent } from './components/bottom-bar/bottom-bar.component';
+import { ResponseListComponent } from './components/response-list/response-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { SummaryTaskComponent } from './components/summary-task/summary-task.component';
 
 
 @NgModule({
@@ -49,13 +53,19 @@ import { BottomBarComponent } from './components/bottom-bar/bottom-bar.component
     CommentListComponent,
     CreateResponseFinalComponent,
     CreateCommentFinalComponent,
-    BottomBarComponent    
+    BottomBarComponent,
+    ResponseListComponent,
+    SummaryTaskComponent    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 1000
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

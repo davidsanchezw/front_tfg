@@ -1,0 +1,63 @@
+<div id="page-container">
+    <div id="content-wrap">
+      <app-upper-bar></app-upper-bar>
+      <div class="container">
+        <h3>Tarea</h3>
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <td class="text-center"><b>Título</b></td>
+            </tr>
+            <tr>
+              <td>{{task.title}}</td>
+            </tr>
+            <tr>
+              <td class="text-center"><b>Enunciado</b></td>
+            </tr>
+            <tr>
+              <td>{{task.statement}}</td>
+            </tr>
+          </tbody>
+        </table>  
+        
+        <div class="container">
+          <h3>Respuestas</h3>
+          <table class="table table-striped" *ngFor="let response of responses">
+            <tbody>
+              <tr>
+                <td class="text-center"><b>Enunciado</b></td>
+              </tr>
+              <tr>
+                <td><textarea id="statement" class="form-control" [(ngModel)]="response.statement" id="statement"
+                    name="statement" rows="3" min="5" disabled></textarea></td>
+              </tr>
+              <tr>
+                <td class="text-center"><b>Solución</b></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="form-group" *ngIf="task.typeTask == 1">
+                    <textarea id="answer" class="form-control" [(ngModel)]="response.responseAnswer[0].answer" id="answer"
+                      name="answer" rows="3" min="5" disabled></textarea>
+                  </div>
+                  <div *ngIf="task.typeTask == 2">
+                    <div class="form-check" *ngFor="let rAnswer of response.responseAnswer; let i = index">
+                      <input type="checkbox" class="form-check-input" id="correct{{i}}" name="correct{{i}}" [value]=""
+                        [(ngModel)]="rAnswer.correct" disabled>
+  
+                      <textarea id="answer{{i}}" class="form-control" [(ngModel)]="rAnswer.answer" name="answer{{i}}"
+                        rows="3" min="5" disabled></textarea>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+        
+    </div>
+    <app-bottom-bar></app-bottom-bar>
+  </div>
+  

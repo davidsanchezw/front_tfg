@@ -10,6 +10,7 @@ import { CommentService } from 'src/app/services/comment.service';
 import { ResponseService } from 'src/app/services/response.service';
 import { TaskService } from 'src/app/services/task.service';
 import { TeamService } from 'src/app/services/team.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-comment',
@@ -33,7 +34,8 @@ export class CreateCommentComponent implements OnInit {
 
   constructor(private responseService: ResponseService, private taskService: TaskService,
     private teamService: TeamService,  private commentService: CommentService,
-    private router: Router, private route: ActivatedRoute) { }
+    private router: Router, private route: ActivatedRoute,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.me = Number(sessionStorage.getItem("id"));
@@ -81,7 +83,7 @@ export class CreateCommentComponent implements OnInit {
     this.commentService.updateComment(this.comment, this.comment.id).subscribe(data => {
       console.log(data);
       console.log(this.completed);   
-    
+      this.toastr.success("", "Comentario guardado");
       if (!this.completed){
         if (this.task.typeIdentity == 1) this.getCommentByTaskAndUser();
           else this.getCommentByTaskAndTeam();
@@ -113,7 +115,7 @@ export class CreateCommentComponent implements OnInit {
 
     this.commentService.createCommentIndividual(new Comment(), this.me, this.task.id).subscribe(data => {
       console.log(data);
-
+      this.toastr.success("", "Siguiente comentario desbloqueado");
     }, error => console.log(error));
   }
 
@@ -122,6 +124,7 @@ export class CreateCommentComponent implements OnInit {
 
     this.commentService.createCommentTeam(new Comment(), this.team.id, this.task.id).subscribe(data => {
       console.log(data);
+      this.toastr.success("", "Siguiente comentario desbloqueado");
     }, error => console.log(error));
   }
 

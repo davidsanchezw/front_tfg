@@ -44,4 +44,10 @@ export class ResponseService {
   getResponseByComment(idComment: number):Observable<ResponseStatement>{
     return this.httpClient.get<ResponseStatement>(`${this.baseURL}/comment/${idComment}`);
   }
+  getResponseById(id: number):Observable<ResponseStatement>{
+    return this.httpClient.get<ResponseStatement>(`${this.baseURL}/${id}`);
+  }
+  getResponsesByTask(idTask: number):Observable<ResponseStatement[]>{
+    return this.httpClient.get<ResponseStatement[]>(`${this.baseURL}/task/${idTask}`);
+  }
 }

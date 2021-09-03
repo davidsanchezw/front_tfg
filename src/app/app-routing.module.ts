@@ -18,6 +18,8 @@ import { CreateCommentComponent } from './components/create-comment/create-comme
 import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { CreateResponseFinalComponent } from './components/create-response-final/create-response-final.component';
 import { CreateCommentFinalComponent } from './components/create-comment-final/create-comment-final.component';
+import { ResponseListComponent } from './components/response-list/response-list.component';
+import { SummaryTaskComponent } from './components/summary-task/summary-task.component';
 
 
 
@@ -42,7 +44,9 @@ const routes: Routes = [
   {path: 'create-comment/:id', component: CreateCommentComponent},
   {path: 'comment-list/:id', component: CommentListComponent},  
   {path: 'create-response-final/:id', component: CreateResponseFinalComponent},
-  {path: 'create-comment-final/:id', component: CreateCommentFinalComponent}
+  {path: 'create-comment-final/:id', component: CreateCommentFinalComponent},
+  {path: 'response-list/:id', component: ResponseListComponent},
+  {path: 'summary-task/:id', component: SummaryTaskComponent}
 ];
 
 @NgModule({

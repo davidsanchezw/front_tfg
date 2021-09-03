@@ -23,7 +23,7 @@
                             type="password"
                             [(ngModel)]="user.hash"
                             name="password"
-                            placeholder="Contraseña antigua"
+                            placeholder="Contraseña nueva"
                             required="required"
                             />
                             <button type="submit" (click)="changePassword()">Cambiar</button>
@@ -38,6 +38,15 @@
                 </tbody>
                 </table>
             </div>
+            <h3> Notas medias </h3> 
+            <div class="container">
+                <div class="form-group">
+                    <b>Nota de entrega:</b> <p>{{medTask}}</p>
+                  </div>
+                  <div class="form-group">
+                    <b>Nota de comentarios:</b> <p>{{medComments}}</p>
+                  </div>
+              </div>
         </div>
     </div>
     <app-bottom-bar></app-bottom-bar>

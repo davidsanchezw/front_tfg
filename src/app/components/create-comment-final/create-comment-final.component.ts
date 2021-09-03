@@ -11,6 +11,7 @@ import { CommentService } from 'src/app/services/comment.service';
 import { ResponseService } from 'src/app/services/response.service';
 import { TaskService } from 'src/app/services/task.service';
 import { TeamService } from 'src/app/services/team.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-comment-final',
@@ -34,7 +35,8 @@ export class CreateCommentFinalComponent implements OnInit {
 
   constructor(private responseService: ResponseService, private taskService: TaskService,
     private teamService: TeamService,  private commentService: CommentService,
-    private router: Router, private route: ActivatedRoute) { }
+    private router: Router, private route: ActivatedRoute,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.me = Number(sessionStorage.getItem("id"));
@@ -82,7 +84,8 @@ export class CreateCommentFinalComponent implements OnInit {
     this.commentService.updateComment(this.comment, this.comment.id).subscribe(data => {
       console.log(data);
       console.log(this.completed);   
-    
+      this.toastr.success("", "Comentario guardado");
+
       if (!this.completed){
         if (this.task.typeIdentity == 1) this.getCommentByTaskAndUser();
           else this.getCommentByTaskAndTeam();

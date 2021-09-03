@@ -1,0 +1,137 @@
+<div id="page-container">
+    <div id="content-wrap">
+      <app-upper-bar></app-upper-bar>
+  
+      <div class="container">
+        <h3> Respuesta </h3>
+  
+        <div class="container">
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <td class="text-center"><b>Título</b></td>
+              </tr>
+              <tr>
+                <td>{{task.title}}</td>
+              </tr>
+              <tr>
+                <td class="text-center"><b>Enunciado</b></td>
+              </tr>
+              <tr>
+                <td><textarea class="form-control" disabled>{{task.statement}}</textarea></td>
+              </tr>
+              <tr>
+                <td class="text-center"><b>Forma de trabajo</b></td>
+              </tr>
+              <tr>
+                <td *ngIf="task.typeIdentity == 1">Individual</td>
+                <td *ngIf="task.typeIdentity == 2">En equipo</td>
+              </tr>
+              <tr>
+                <td class="text-center"><b>Tipo de trabajo</b></td>
+              </tr>
+              <tr>
+                <td *ngIf="task.typeIdentity == 1">Desarrollo</td>
+                <td *ngIf="task.typeIdentity == 2">Test</td>
+              </tr>
+              <tr>
+                <td class="text-center"><b>Entrega respuesta final</b></td>
+              </tr>
+              <tr>
+                <td>{{scheduleTime.finalPresentation}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <div *ngIf="task.typeIdentity == 2">
+          <h3>Equipo</h3>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of team.users">
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h3> Respuesta entregada </h3>
+        <div class="container">
+            <div class="form-group">
+              <label for="statement"><b>Enunciado</b></label>
+              <textarea id="statement" class="form-control" [(ngModel)]="responseStatement.statement" id="statement"
+                name="statement" rows="3" min="5" disabled></textarea>
+            </div>
+  
+            <div class="form-group" *ngIf="task.typeTask == 1">
+              <label for="answer"><b>Solución</b></label>
+              <textarea id="answer" class="form-control" [(ngModel)]="responseAnswer.answer" id="answer" name="answer"
+                rows="3" min="5" disabled></textarea>
+            </div>
+  
+  
+            <div *ngIf="task.typeTask == 2">
+              <label for="answer"><b>Solución</b></label>
+  
+              <div class="form-check" *ngFor="let response of responseAnswers; let i = index">
+  
+  
+                <input type="checkbox" class="form-check-input" id="correct{{i}}" name="correct{{i}}" [value]=""
+                  [(ngModel)]="response.correct">
+                <textarea id="answer{{i}}" class="form-control" [(ngModel)]="response.answer" name="answer{{i}}" rows="3"
+                  min="5" required></textarea>
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <b>Última modificación</b>
+            </div>
+            <div class="container">
+              {{responseStatement.lastTime}}
+            </div>  
+  
+
+          <h3> Calificaciones </h3>
+          <div class="container">
+            <div class="form-group">
+                <b>Nota de entrega:</b> <p>{{medTask}}</p>
+              </div>
+              <div class="form-group">
+                <b>Nota de comentarios:</b> <p>{{medComments}}</p>
+              </div>
+          </div>
+  
+          <h3 id = "title_comments"> Comentarios </h3>
+          <div class = "container">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Comentarios</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let comment of comments; let i = index">
+                  <td><textarea class="form-control" disabled>{{ comment.commentText }}</textarea></td>
+  
+                  <td>
+                    <input type="number" class="form-control" id="calificationCommentator{{i}}" [(ngModel)]="comment.calificationCommentator"
+              name="calificationCommentator{{i}}" min="1" max="5" value="1" required>                  
+                    <button (click) = "updateComment(comment, comment.id)" class = "btn btn-info" *ngIf = "rol == 1"> Puntuar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+  
+      </div>
+      <app-bottom-bar></app-bottom-bar>
+    </div>
+  

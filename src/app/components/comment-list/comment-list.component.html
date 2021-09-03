@@ -83,14 +83,12 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>ID</th>
               <th>Nombre</th>
               <th>Acción</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let comment of comments; let i = index">
-              <td>{{ comment.id }}</td>
               <td>Comentario {{ i + 1 }}</td>
               <td>
                 <button (click)="goToCreateComment(comment.id)" class="btn btn-info"> Completar</button>

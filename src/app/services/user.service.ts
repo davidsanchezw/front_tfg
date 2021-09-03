@@ -62,4 +62,11 @@ export class UserService {
     this.router.navigate(['/login']);
   }
 
+  //---
+  getMedTask(idUser: number):Observable<number>{
+    return this.httpClient.get<number>(`${this.baseURL}/medTask/${idUser}`)
+  }
+  getMedComments(idUser: number):Observable<number>{
+    return this.httpClient.get<number>(`${this.baseURL}/medComments/${idUser}`)
+  }
 }

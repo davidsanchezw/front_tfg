@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ScheduleTime } from 'src/app/classes/schedule-time';
 import { Task } from 'src/app/classes/task';
 import { ScheduleTimeService } from 'src/app/services/schedule-time.service';
@@ -24,7 +25,8 @@ export class CreateTaskComponent implements OnInit {
   typeIdentity: number;
 
   constructor(private route: ActivatedRoute, private scheduleTimeService: ScheduleTimeService,
-    private taskService: TaskService, private router: Router, private teamService: TeamService) { }
+    private taskService: TaskService, private router: Router, private teamService: TeamService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.rol = Number(sessionStorage.getItem("rol"));
@@ -72,12 +74,14 @@ export class CreateTaskComponent implements OnInit {
   }
 
   goToUpdateTask(idTask:number){
+    this.toastr.success("", "Tarea creada");
     this.router.navigate(['update-task', idTask]);
   }
 
   createTeams(idTask: number){
     this.teamService.createTeam(idTask, this.numberTeam).subscribe( data =>{
       console.log(data); 
+      this.toastr.success("", "Tarea creada con equipos");
       this.goToUpdateTask(idTask);     
     },
     error => console.log(error));

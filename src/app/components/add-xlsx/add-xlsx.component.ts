@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Group } from 'src/app/classes/group';
 import { GroupService } from 'src/app/services/group.service';
 
@@ -25,7 +26,7 @@ export class AddXlsxComponent implements OnInit {
   });
   //Fin
     constructor(private groupService: GroupService, private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute, private toastr: ToastrService) { }
 
   ngOnInit(): void {    
     this.rol = Number(sessionStorage.getItem("rol"));
@@ -62,9 +63,16 @@ export class AddXlsxComponent implements OnInit {
     formData.append('file', this.myForm.get('fileSource')?.value);
     this.groupService.addXLSX(this.id, formData).subscribe( data =>{
       console.log(data);
+      this.toastr.success("Se han añadido los usuarios correctamente y se le ha enviado un correo con sus contraseñas", "Grupo creado");
       this.goToGroupList();
     },
-    error => console.log(error));
+    error => {console.log(error);
+    this.toastr.info("Subir UN excel con las siguientes columnas: \n" + 
+    "1: firstName\n" + "2: lastName\n" + "3: email\n" 
+    + "4: typeUser\n" + "5: hash\n", "Requisitos");
+    });
+    
+
   }
 
   goToGroupList(){

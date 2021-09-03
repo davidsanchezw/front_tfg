@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ScheduleTime } from 'src/app/classes/schedule-time';
 import { Task } from 'src/app/classes/task';
 import { Team } from 'src/app/classes/team';
@@ -23,7 +24,8 @@ export class UpdateTaskComponent implements OnInit {
   teams: Team[] = [];
   constructor(private taskService: TaskService, private router: Router,
     private route: ActivatedRoute, private groupService: GroupService,
-    private scheduleTimeService: ScheduleTimeService, private teamService: TeamService) { }
+    private scheduleTimeService: ScheduleTimeService, private teamService: TeamService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.rol = Number(sessionStorage.getItem("rol"));
@@ -82,7 +84,7 @@ export class UpdateTaskComponent implements OnInit {
 
       this.updateTimes(this.scheduleTime.id);
 
-
+      this.toastr.success("", "Tarea actualizada");
       this.goToTaskList();
     }, error => console.log(error));
   }

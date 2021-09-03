@@ -18,7 +18,7 @@
               <td class="text-center"><b>Enunciado</b></td>
             </tr>
             <tr>
-              <td>{{task.statement}}</td>
+              <td><textarea class="form-control" disabled>{{task.statement}}</textarea></td>
             </tr>
             <tr>
               <td class="text-center"><b>Forma de trabajo</b></td>
@@ -107,18 +107,18 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>id</th>
                 <th>Comentarios</th>
                 <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let comment of comments">
-                <td>{{ comment.id }}</td>
-                <td>{{ comment.commentText }}</td>
+              <tr *ngFor="let comment of comments; let i = index">
+                <td><textarea class="form-control" disabled>{{ comment.commentText }}</textarea></td>
 
                 <td>
-                  <!--<button (click) = "updateGroup(group.id)" class = "btn btn-info" *ngIf = "rol == 111"> Modificar</button>-->
+                  <input type="number" class="form-control" id="calificationCommentator{{i}}" [(ngModel)]="comment.calificationCommentator"
+            name="calificationCommentator{{i}}" min="1" max="5" value="1" required>                  
+                  <button (click) = "updateComment(comment, comment.id)" class = "btn btn-info" *ngIf = "rol == 1"> Puntuar</button>
                 </td>
               </tr>
             </tbody>

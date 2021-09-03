@@ -25,6 +25,7 @@ export class UpdateUserComponent implements OnInit {
     this.userService.getUserById(this.id).subscribe(data => {
       console.log(data);
       this.user = data;
+      this.user.hash = "";
     }, error => console.log(error));
   }
 

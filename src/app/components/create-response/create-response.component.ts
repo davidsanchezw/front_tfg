@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ResponseAnswer } from 'src/app/classes/response-answer';
 import { ResponseStatement } from 'src/app/classes/response-statement';
 import { ScheduleTime } from 'src/app/classes/schedule-time';
@@ -30,7 +31,7 @@ export class CreateResponseComponent implements OnInit {
 
   constructor(private responseService: ResponseService, private taskService: TaskService,
      private router: Router, private route: ActivatedRoute,
-     private teamService: TeamService) { }
+     private teamService: TeamService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.me = Number(sessionStorage.getItem("id"));
@@ -115,6 +116,7 @@ export class CreateResponseComponent implements OnInit {
         this.responseService.createResponseAnswer(this.responseAnswer, this.responseStatement.id).subscribe(data => {
           console.log(data);
         }, error => console.log(error));
+        this.toastr.success("", "Respuesta creada de equipo");
       }, error => console.log(error));
     }
     //Test
@@ -126,6 +128,7 @@ export class CreateResponseComponent implements OnInit {
         this.responseService.createResponseAnswer(this.responseAnswers[this.counter], this.responseStatement.id).subscribe(data => {
           console.log(data);
         }, error => console.log(error));}
+        this.toastr.success("", "Respuesta creada de equipo");
       }, error => console.log(error));
     }
   }
@@ -139,6 +142,7 @@ export class CreateResponseComponent implements OnInit {
         this.responseService.createResponseAnswer(this.responseAnswer, this.responseStatement.id).subscribe(data => {
           console.log(data);
         }, error => console.log(error));
+        this.toastr.success("", "Respuesta creada");
       }, error => console.log(error));
     }
     //Test
@@ -151,6 +155,7 @@ export class CreateResponseComponent implements OnInit {
         this.responseService.createResponseAnswer(this.responseAnswers[this.counter], this.responseStatement.id).subscribe(data => {
           console.log(data);
         }, error => console.log(error));}
+        this.toastr.success("", "Respuesta creada");
       }, error => console.log(error));
     }
   }
@@ -162,7 +167,8 @@ export class CreateResponseComponent implements OnInit {
       console.log(data);
       this.responseService.updateResponseAnswer(this.responseAnswers[0].id, this.responseAnswers[0]).subscribe(data => {
             console.log(data);
-          }, error => console.log(error));
+          }, error => console.log(error));          
+      this.toastr.success("", "Respuesta actualizada");
     }, error => console.log(error));
 
     // Test
@@ -175,6 +181,7 @@ export class CreateResponseComponent implements OnInit {
                 console.log(data);
               }, error => console.log(error));
         }
+        this.toastr.success("", "Respuesta actualizada");
       }, error => console.log(error));
     } 
   }

@@ -8,7 +8,6 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Título</th>
             <th>Próxima fecha</th>
             <th>Acciones</th>
@@ -20,11 +19,11 @@
               this.getScheduleTime(task.id)
 
             </script>
-            <td>{{ task.id }}</td>
             <td>{{ task.title }}</td>
             <td>{{ task.scheduleTime.presentation }}</td>
             <td>
               <button (click)="updateTask(task.id)" class="btn btn-info" *ngIf="rol == 2"> Ver/Editar</button>
+              <button (click)="responseList(task.id)" class="btn btn-secondary" *ngIf="rol == 2"> Lista de respuestas</button>
               <button (click)="createResponse(task.id)" class="btn btn-info" *ngIf="rol == 1"> Crear/Modificar
                 respuesta</button>
               <button (click)="goToCommentsList(task.id)" class="btn btn-secondary" *ngIf="rol == 1"> Ver lista de
@@ -32,6 +31,8 @@
               <button (click)="createResponseFinal(task.id)" class="btn btn-danger" *ngIf="rol == 1"> Crear/Modificar
                 respuesta final</button>
               <button (click)="goToCommentsList(task.id)" class="btn btn-danger" *ngIf="rol == 1"> Crear/Modificar
+                reviews final</button>
+              <button (click)="goToSummary(task.id)" class="btn btn-primary" *ngIf="rol == 1"> Crear/Modificar
                 reviews final</button>
 
               <!--Si no ha llegado el primero -> respuesta || COMPROBAR TBN EN EL PROPIO OCMPONENTE

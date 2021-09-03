@@ -11,6 +11,7 @@ import { TaskService } from 'src/app/services/task.service';
 import { TeamService } from 'src/app/services/team.service';
 import { Comment } from 'src/app/classes/comment';
 import { CommentService } from 'src/app/services/comment.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -35,7 +36,8 @@ export class CreateResponseFinalComponent implements OnInit {
 
   constructor(private responseService: ResponseService, private taskService: TaskService,
      private router: Router, private route: ActivatedRoute,
-     private teamService: TeamService, private commentService: CommentService) { }
+     private teamService: TeamService, private commentService: CommentService,
+     private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.me = Number(sessionStorage.getItem("id"));
@@ -170,6 +172,7 @@ export class CreateResponseFinalComponent implements OnInit {
       this.responseService.updateResponseAnswer(this.responseAnswers[0].id, this.responseAnswers[0]).subscribe(data => {
             console.log(data);
           }, error => console.log(error));
+      this.toastr.success("", "Respuesta actualizada");
     }, error => console.log(error));
 
     // Test
@@ -182,6 +185,7 @@ export class CreateResponseFinalComponent implements OnInit {
                 console.log(data);
               }, error => console.log(error));
         }
+        this.toastr.success("", "Respuesta actualizada");
       }, error => console.log(error));
     } 
   }
@@ -191,5 +195,13 @@ export class CreateResponseFinalComponent implements OnInit {
       console.log(data);
       this.comments = data;
     }, error => console.log(error));
+  }
+
+  updateComment(comment: Comment, idComment: number){
+    this.commentService.updateComment(comment, idComment).subscribe(data => {
+      console.log(data);
+      this.toastr.success("", "Puntuación guardada");   
+      
+    }, error => console.log(error)); 
   }
 }

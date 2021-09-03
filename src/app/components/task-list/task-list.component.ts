@@ -54,6 +54,10 @@ export class TaskListComponent implements OnInit {
     this.router.navigate(['update-task', id]);
   }
 
+  responseList(idTask: number){
+    this.router.navigate(['response-list', idTask]);
+  }
+
   createResponse(idTask: number){
     this.router.navigate(['create-response', idTask]);
   }
@@ -64,5 +68,9 @@ export class TaskListComponent implements OnInit {
 
   createResponseFinal(idTask: number){
     this.router.navigate(['create-response-final', idTask]);
+  }
+
+  goToSummary(idTask: number){
+    this.router.navigate(['summary-task', idTask]);
   }
 }
