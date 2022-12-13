@@ -1,6 +1,10 @@
-# Fronttfg
+<h1 align="center">
+  front_tfg
+</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
+This repository contains the frontend part of my thesis. It was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
+
+My thesis consists in a tool webapp for peer to peer reviewing. Thanks to the motivation of my teacher Iria and support during the project. The main objective was to provide a tool to help teachers and students in the learning task
 
 ## Development server
 
